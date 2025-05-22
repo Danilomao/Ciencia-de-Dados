@@ -1,0 +1,32 @@
+import pandas as pd
+
+enem = pd.read_csv("MICRODADOS_ENEM_2023.csv", sep=";", encoding = 'ISO-8859-1')
+
+enem.head()
+
+enem.head(10)
+
+enem.columns.values
+
+colunas = ['TP_SEXO', 'NU_NOTA_REDACAO'] # criamos uma variável com os campos tipo de sexo e nota redação
+
+datasetcolunas = enem.filter (items = colunas)  # criamos a variável  dataset onde estão disponíveis apenas os dados das colunas tipo de sexo e nota redação
+
+datasetcolunas.head()  # Apresenta o cabeçalho da variável dataset
+
+datasetcolunas = datasetcolunas.dropna()  # removemos os campos da nota de redação onde está o NaN
+datasetcolunas.head()
+
+datasetcolunas.groupby ('TP_SEXO').count() # exibe o total de participantes de acordo com o sexo e sem o NaN
+
+datasetcolunas.groupby('TP_SEXO').max()   # a nota máxima do masculino e do feminino
+
+datasetcolunas.groupby('TP_SEXO').min()  # a nota mínimo do masculino e do feminino
+
+datasetcolunas.groupby('TP_SEXO').mean() # nota média masculino e feminino
+
+datasetcolunas.groupby('TP_SEXO').median() # mediana
+
+datasetcolunas.groupby('TP_SEXO').hist() # histograma
+
+datasetcolunas.groupby ('TP_SEXO').describe() # exibe a contagem, a media, desvio padrão, o mínimo, distribuição por quartis e o máximo.
