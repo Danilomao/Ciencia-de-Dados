@@ -1,0 +1,34 @@
+import pandas as pd
+
+enem = pd.read_csv("MICRODADOS_ENEM_2023.csv", sep=";", encoding = 'ISO-8859-1') # a variável enem armazena o banco de dados
+
+enem.head()
+
+enem.head(10)
+
+enem.columns.values
+
+enem['NO_MUNICIPIO_ESC'].value_counts() #conta o número de alunos de acordo com o nome do municipio escolar
+
+enem ['TP_SEXO'].value_counts()
+
+total = enem['TP_SEXO'].value_counts() #a variável total vai armazenar a contagem dos participantes com base no sexo
+
+percentual = [100*x/total.sum() for x in total] #para cada total (F e M), calcula-se o percentual
+
+percentual #exibindo os porcentuais
+
+enem ['IN_TREINEIRO'].value_counts()
+
+totaltreineiro = enem ['IN_TREINEIRO'].value_counts()
+
+percentualtrei = [100*x/totaltreineiro.sum() for x in totaltreineiro ] #a variável percentualtrei exibe o porcentual dos treineiros
+percentualtrei
+
+/////////////------------------///////////////////-------------------------///////////////////////----------------------//////////////////////-----------///////////--------
+
+Passo a passo para carregar o banco de dados no Google Colab
+
+import pandas as pd
+
+enem = pd.read_csv ('/content/MICRODADOS_ENEM_2023.csv', sep = ";", encoding ='ISO-8859-1')
